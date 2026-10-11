@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #111914;
+  --color-forest: #1C3027;
+  --color-paper: #F5F4EC;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #EBEDE5;
+  --color-lime: #D7F36B;
+  --color-sage: #8B9A8D;
+  --color-secondary: #626B63;
+  --color-border: #DDE1D8;
+  --color-error: #B42318;
+  --color-warning: #925F12;
+  --color-success: #237A50;
+
+  --font-display: var(--font-dm-sans), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+}
+
+:root {
+  --background: #F5F4EC;
+  --foreground: #111914;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tabular numerals for statistics, timestamps, metrics */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle technical grid overlay for research surfaces */
+.technical-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(221, 225, 216, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(221, 225, 216, 0.4) 1px, transparent 1px);
+}
+
+.technical-grid-dark {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #EBEDE5;
+}
+::-webkit-scrollbar-thumb {
+  background: #8B9A8D;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #626B63;
+}
+
+/* Keyframe Animations */
+@keyframes signalPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes sweepLine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-signal-pulse {
+  animation: signalPulse 2.4s ease-in-out infinite;
+}
+
+.animate-sweep-line {
+  animation: sweepLine 3.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-signal-pulse,
+  .animate-sweep-line,
+  .animate-fade-in {
+    animation: none !important;
+    transition: none !important;
+  }
+}
